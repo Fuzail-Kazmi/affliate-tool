@@ -1,0 +1,67 @@
+import RecordForm from '@/app/admin/_components/RecordForm'
+import Link from 'next/link'
+import type { Product } from '@/lib/db/schema'
+import ImageUploadInput from '@/app/_components/ImageUploadInput'
+
+type Props = {
+
+  action: (formData: FormData) => Promise<{error:string} | void>
+  defaultValues?: Partial<Product>
+}
+
+export default function ProductForm({ action, defaultValues }: Props) {
+  return (
+    <RecordForm action={action} className="bg-white rounded-xl border border-emerald-100 shadow-sm p-6 space-y-5 max-w-lg">
+      <div>
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Product Name *</label>
+        <input
+          id="name" name="name"
+          required
+          defaultValue={defaultValues?.name}
+          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          placeholder="e.g. Wireless Headphones"
+        />
+      </div>
+
+      <ImageUploadInput label="Product Image" defaultValue={defaultValues?.imageUrl} />
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Price *</label>
+        <input
+          name="price"
+          required
+          defaultValue={defaultValues?.price}
+          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          placeholder="e.g. $29.99"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Affiliate / Store URL</label>
+        <input
+          name="linkUrl"
+          type="url"
+          defaultValue={defaultValues?.linkUrl ?? ''}
+          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          placeholder="https://store.com/product"
+        />
+        <p className="text-xs text-gray-400 mt-1">Clicking the product on the homepage redirects here.</p>
+      </div>
+
+      <div className="flex gap-3 pt-2">
+        <button
+          type="submit"
+          className="px-5 py-2.5 bg-emerald-700 text-white rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors"
+        >
+          Save
+        </button>
+        <Link
+          href="/admin/products"
+          className="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-200 transition-colors"
+        >
+          Cancel
+        </Link>
+      </div>
+    </RecordForm>
+  )
+}

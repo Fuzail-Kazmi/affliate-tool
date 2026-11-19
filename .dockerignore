@@ -1,0 +1,16 @@
+**
+!requirements.txt
+!src/
+!src/__init__.py
+!src/discovery.py
+!src/banner_offers.py
+!src/merchant_pages.py
+!src/offer_cli.py
+!storefront/
+!storefront/**
+storefront/node_modules
+storefront/.next
+storefront/.env*
+storefront/*.tsbuildinfo
+storefront/.local
+
