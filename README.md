@@ -1,6 +1,6 @@
 # UnityAffliate powered by UnityAlgo
 
-The integrated portal uses the supplied BargainsVault storefront, its Next.js admin panel, PostgreSQL store and coupon records, the UnityAlgo logo, and locally bundled Poppins. Start from the repository root with Bun 1.4.5 and Python 3.10+.
+The integrated portal uses the supplied storefront, its Next.js admin panel, PostgreSQL store and coupon records
 
 ```sh
 python -m pip install -r requirements.txt
